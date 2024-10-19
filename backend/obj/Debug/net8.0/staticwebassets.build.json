@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3S4MKtYZAJVTHZuiPzeITNSGgrRu6PULTiCcmULuODI=",
+  "Source": "DriveFuelControlService",
+  "BasePath": "_content/DriveFuelControlService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
