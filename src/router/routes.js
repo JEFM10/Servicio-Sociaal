@@ -1,5 +1,7 @@
 import telemetryRoutes from 'src/telemetry/routes'
 import homeRoutes from 'src/home/routes'
+import mappingRoutes from 'src/mapping/routes'
+import modeRoutes from 'src/botonMode/routes'
 
 const routes = [
   {
@@ -7,7 +9,9 @@ const routes = [
     component: () => import('src/shared/layouts/MainLayout.vue'),
     children: [
       ...homeRoutes,
-      ...telemetryRoutes
+      ...telemetryRoutes,
+      ...mappingRoutes,
+      ...modeRoutes
     ]
   },
 

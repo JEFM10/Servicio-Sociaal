@@ -1,6 +1,6 @@
 <template>
   <div class="flex column items-center">
-    <PageHeader title="Telemetriaa" />
+    <PageHeader title="Telemetria" />
 
     <q-tabs v-model="tab" style="width: 83%;" class="text-white q-mb-md">
       <q-tab @click="navigateTo(menuOption)" v-for="(menuOption, index) in telemetryMenuOptions" :key="index"

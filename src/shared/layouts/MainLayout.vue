@@ -26,8 +26,8 @@ export default defineComponent({
     const menuOptions = [
       { name: "home", iconName: "home", },
       { name: "telemetry", iconName: "computer" },
-      { name: "location", iconName: "place" },
-      { name: "mapping", iconName: "tune" }
+      { name: "mapping", iconName: "place" },
+      { name: "mode", iconName: "tune" }
     ]
 
     const navigateTo = (routeName) => {
