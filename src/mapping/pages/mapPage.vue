@@ -1,9 +1,10 @@
 <template>
   <div class="flex column items-center">
-    <PageHeader title="Telemetriaa" />
+    <!-- Encabezado reutilizado -->
+    <PageHeader title="Telemetría" />
     
     <!-- Mapa y barra de búsqueda -->
-    <div>
+    <div class="map-container">
       <!-- Barra de búsqueda -->
       <input
         type="text"
@@ -13,37 +14,37 @@
         class="search-bar"
       />
 
-      <!-- Mapa -->
+      <!-- Contenedor del mapa -->
       <div id="map" style="height: 400px; width: 100%;"></div>
     </div>
   </div>
 </template>
 
 <script>
-import PageHeader from 'src/shared/components/PageHeader.vue';
+import PageHeader from "src/shared/components/PageHeader.vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
 
 export default {
   name: "MapPage",
+  components: {
+    PageHeader,
+  },
   data() {
     return {
       map: null, // Instancia del mapa de Leaflet
-      searchQuery: "", // Query de búsqueda
-      markers: [], // Lista de marcadores creados
+      searchQuery: "", // Entrada de búsqueda
+      markers: [], // Lista de marcadores
     };
   },
   mounted() {
-    // Inicializar el mapa al montar el componente
     this.initializeMap();
   },
   methods: {
     initializeMap() {
-      // Crear el mapa en el div con id "map"
       this.map = L.map("map").setView([51.505, -0.09], 13);
 
-      // Agregar la capa base (OpenStreetMap)
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -62,14 +63,11 @@ export default {
           const lat = parseFloat(location.lat);
           const lon = parseFloat(location.lon);
 
-          // Centrar el mapa en la nueva ubicación
           this.map.setView([lat, lon], 13);
 
-          // Agregar un marcador en la ubicación buscada
           const marker = L.marker([lat, lon]).addTo(this.map);
           this.markers.push(marker);
 
-          // Opcional: Mostrar un popup con información
           marker.bindPopup(`Ubicación: ${location.display_name}`).openPopup();
         } else {
           alert("No se encontró la ubicación");
@@ -80,7 +78,6 @@ export default {
     },
   },
   beforeUnmount() {
-    // Limpiar el mapa y marcadores cuando se destruya el componente
     if (this.map) {
       this.map.remove();
     }
@@ -88,7 +85,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .search-bar {
   width: 100%;
   padding: 10px;
@@ -101,4 +98,10 @@ export default {
   height: 400px;
   width: 100%;
 }
+
+.map-container {
+  width: 100%;
+  max-width: 1200px; /* Opcional: Limitar el ancho del mapa */
+}
 </style>
+
